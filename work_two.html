@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.header{width: 1200px;}
+			body{height: 800px; width:1200px; margin: 0 auto; 
+			background-image: url(img2/bg3.jpg);background-position: center;
+			background-repeat: no-repeat;background-attachment: fixed;}
+			.mytable td{ height: 120px; width: 120px; text-align: center;}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<div style="float: left;">
+				<h1 style="padding-left: 20px;">开始&nbsp;&nbsp;&nbsp;&nbsp;
+					<select style="width: 80px; opacity: 0.5;" >
+					<option " class="options"  value="">图片一</option>
+					<option " class="options" value="">图片二</option>
+					<option selected="selected" " class="options" value="">图片三</option>
+				</select>
+				<button style="opacity: 0.5;">确认</button>
+				</h1>
+				
+			</div>
+			
+			<div class="right">
+				<img src="img2/user.jpg" style="float: right; padding-right: 20px;"/>
+			</div>
+		</div>
+		<table class="mytable" cellpadding="0px" cellspacing="5px">
+			<tr>
+				<td>
+					<img src="img2/tab1.jpg" />
+				</td>
+				<td>
+					<img src="img2/tab2.jpg" />
+				</td>
+				<td colspan="2">
+					<img src="img2/btab1.jpg" />
+				</td>
+								
+				<td style="width: 20px;">
+					
+				</td>
+				<td colspan="2">
+					<img src="img2/btab6.jpg" />
+					
+				</td>
+				<td >
+					<img src="img2/tab11.jpg" />
+
+				</td>
+				
+				<td >
+					<img src="img2/tab12.jpg" />
+					
+				</td>
+				<td >
+					<img src="img2/tab13.jpg" />
+					
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="img2/tab4.jpg" />
+				</td>
+				<td>
+					<img src="img2/tab3.jpg" />
+				</td>
+				<td colspan="2">
+					<img src="img2/btab2.jpg" />
+				</td>
+								
+				<td style="width: 20px;">
+					
+				</td>
+				<td >
+					<img src="img2/tab14.jpg" />
+				</td>
+				<td >
+					<img src="img2/tab15.jpg" />
+				</td>
+				<td colspan="2" >
+					<img src="img2/btab1.jpg" />
+				</td>
+				
+				
+			</tr>
+			<tr>
+				<td>
+					<img src="img2/tab5.jpg" />
+				</td>
+				<td>
+					<img src="img2/tab6.jpg" />
+				</td>
+				<td colspan="2">
+					<img src="img2/btab3.jpg" />
+				</td>
+								
+				<td style="width: 20px;">
+					
+				</td>
+				<td>
+					<img src="img2/tab16.jpg" />
+				</td>
+				<td >
+					<img src="img2/tab17.jpg" />
+				</td>
+				<td >
+					<img src="img2/tab18.jpg" />
+				</td>
+				<td >
+					<img src="img2/tab19.jpg" />
+				</td>
+				
+			</tr>
+			<tr>
+				<td>
+					<img src="img2/tab8.jpg" />
+				</td>
+				<td>
+					<img src="img2/tab7.jpg" />
+				</td>
+				<td colspan="2">
+					<img src="img2/btab4.jpg" />
+				</td>
+								
+				</td>
+				<td style="width: 20px;" >
+					
+
+				<td colspan="2">
+					<img src="img2/btab8.jpg" />
+				</td>
+				
+				
+				<td colspan="2">
+					<img src="img2/btab9.jpg" />
+				</td>
+				
+			</tr>
+			<tr>
+				<td colspan="2">
+					<img src="img2/btab5.jpg" />
+				</td>
+				
+				<td >
+					<img src="img2/tab9.jpg" />
+				</td>
+				<td >
+					<img src="img2/tab10.jpg" />
+				</td>				
+				<td style="width: 20px;">
+					
+				</td>
+				<td>
+					<img src="img2/tab20.jpg" />
+				</td>
+				<td >
+					<img src="img2/tab21.jpg" />
+				</td>
+				<td >
+					<img src="img2/tab22.jpg" />
+				</td>
+				<td >
+					<img src="img2/tab23.jpg" />
+				</td>
+				
+			</tr>
+		</table>
+		<script src="https://cdn.bootcss.com/jquery/1.4.4/jquery.js"></script>
+		<script>
+			$('button').click(function(){
+				var $pic = $('select>option:selected')
+				if($pic.index()===0){
+					$('body').css('background-image','url(img2/bg1.jpg)')
+				}
+				if($pic.index()===1){
+					$('body').css('background-image','url(img2/bg2.jpg)')
+				}
+				if($pic.index()===2){
+					$('body').css('background-image','url(img2/bg3.jpg)')
+				}
+
+			})
+		</script>
+	</body>
+</html>

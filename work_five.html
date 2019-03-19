@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin: 60px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			
+			document.write("<h1>三角形</h1>")	
+			var cow1 = prompt('请输入三角形打印行数',5)
+			for(var i=1;i<=cow1;i++){				
+				for(var j=1;j<=i;j++){
+					
+					document.write("*&nbsp;&nbsp;&nbsp;")
+				
+				}
+			    document.write("<br />")
+			}
+			
+			document.write("<h1>平行四边形</h1>")
+			var cow2 = prompt('请输入平行四边行打印行数',5)
+			for(var i=1;i<=cow2;i++){
+				var a = 1
+				for(a;a<=(cow2-i+1)*2-2;a++){
+					document.write("&nbsp;") 
+				}
+				for(var j=1;j<=cow2;j++){
+					document.write("*&nbsp;&nbsp;&nbsp;")
+				}
+				document.write("<br />")
+			}
+			
+			document.write("<h1>菱形</h1>")
+			var cow3 = prompt('请输入菱形的行数',5)
+			if(cow3%2==0){
+				alert('不能构成菱形')				
+			}else{
+				var c=1;
+				for(var i=1;i<=cow3;i++){
+					
+				if(i<=cow3/2+1){
+					for(var q=1;q<=2*i-1;q++){
+					document.write('*&nbsp;&nbsp;&nbsp;')	
+					}
+					
+				}else{
+					
+					for(var p=1;p<=cow3-2*c;p++){						
+						document.write('*&nbsp;&nbsp;&nbsp;')
+						
+					}
+					c++;
+				}
+				
+				document.write('<br />')
+			}
+			}
+			
+			/*document.write("<h1>三角形</h1>")			
+			for(var i=1;i<=5;i++){
+				for(var a=1;a<=10-2*i;a++){
+					document.write("&nbsp;")
+				}
+				for(var j=1;j<=i;j++){
+					
+					document.write("*&nbsp;&nbsp;&nbsp;")
+				
+				}
+			    document.write("<br />")
+			}
+			
+			
+			document.write("<h1>平行四边形</h1>")
+			for(var i=1;i<=5;i++){
+				for(var a=1;a<=10-2*i;a++){
+					document.write("&nbsp;")
+				}
+				for(var j=1;j<=5;j++){
+					document.write("*&nbsp;&nbsp;&nbsp;")
+				}
+				document.write("<br />")
+			}
+			
+			
+			
+			document.write("<h1>菱形</h1>")
+			for(var i=1;i<=5;i++){
+				if(i<=3){
+					for(var a=1;a<=12-4*i;a++){
+					document.write("&nbsp;")
+				}
+								
+				for(var j=1;j<=2*i-1;j++){
+					document.write("*&nbsp;&nbsp;&nbsp;")
+				}
+				document.write("<br />")
+				}				
+				else if(i==4){
+					for(var b=1;b<=4;b++){
+						document.write("&nbsp;")
+					}
+					for(var j=1;j<=3;j++){
+					document.write("*&nbsp;&nbsp;&nbsp;")
+				}
+					document.write("<br />")
+				}else{
+					for(var b=1;b<=8;b++){
+						document.write("&nbsp;")
+					}
+					for(var j=1;j<=1;j++){
+					document.write("*&nbsp;&nbsp;")
+				}
+					document.write("<br />")
+				}
+				 
+			}
+			*/
+		</script>
+	</body>
+</html>

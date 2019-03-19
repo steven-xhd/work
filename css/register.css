@@ -1,0 +1,45 @@
+body{
+	
+	height: 800px;
+	width: 1500px;
+	background-image: url(../img3/background.jpg);
+	background-repeat: no-repeat;
+    padding-top: 200px;
+    
+}
+.register{
+	height: 600px;
+	width: 500px;
+	margin: 0 auto;
+}
+.register_input{
+    line-height: 55px;
+	height:56px;
+	width: 436px;
+	border: 1px #dddddd  solid;	
+	margin: 20px auto;
+}
+.register .input_text{
+	padding-left: 42px;
+	font-size: medium;
+	height: 52px;	
+	width:303px ;
+	border: 0px;
+
+}
+.agree{
+	padding-left: 28px;
+}
+.font_color{
+	color: #929aff;
+}
+.register_button{
+	height:55px;
+	width: 450px;
+	background: red;
+	margin: 20px;
+	text-align: center;
+	font-size: large;
+	color: #ffffff;
+	border: 0px;
+}

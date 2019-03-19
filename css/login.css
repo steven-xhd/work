@@ -1,0 +1,94 @@
+body{
+	padding: 0;
+	margin: 0;
+	height: 900px;
+	width: 1600px;
+	padding: 0;
+	margin: 0;
+	
+}
+.logo{	
+	height: 130px;	
+	padding-left: 60px;
+	margin-top: 20px;
+}
+.login{
+	width: 1600px;
+	height: 600px;
+	background-image: url(../img3/content_pic.png);
+	
+}
+.text_describu{
+	height: 150px;	
+}
+.login_content{
+	float: left;
+	margin-left: 100px;
+}
+.login_input{
+	padding: 40px;
+	margin-left: 250px;
+	height: 350px;
+	width: 330px;
+	background: #ecf9ff;
+	margin-top:100px;
+}
+.input_text{
+	height: 42px;
+	width: 340px;
+	border: 0px ;
+	margin: 0 auto;
+	margin-top: 30px;
+
+}
+.username{
+	background-image: url(../img3/username.png);
+	background-repeat: no-repeat;
+}
+.password{
+	background-image: url(../img3/password.png);
+	background-repeat: no-repeat;
+}
+.input_text input{
+	padding-left: 60px;
+	height: 42px;
+	width: 280px;
+	border: 1px solid #cdcdcd;
+	font-size:medium;
+}
+.login_font{
+	padding-left: 5px;
+	color: #585b5d;
+	font-size: large;
+}
+.remenber_password{
+	padding-left: 5px;
+	margin-top: 30px;
+	color: #8b8e8f;
+}
+.login_button{
+	height: 44px;
+	width: 340px;
+	background: #00a0e9;
+	color: white;
+	font-size: x-large;
+	border: 0px;
+}
+.forget_password{
+	padding-left: 5px;
+	margin-top: 30px;
+	color: #8b8e8f;
+}
+.help{
+	float: left;
+}
+.footer_left{
+	float: left;
+	color: gray;
+	padding: 10px 250px;
+}
+.footer_right{
+	float: right;
+	color: gray;
+	padding: 10px 250px;
+}
