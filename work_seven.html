@@ -1,81 +1,151 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<style type="text/css">
-			body{
+			body {
 				background-image: url(img7/grassland.png);
 			}
-			input{
+			
+			input {
 				height: 58px;
 				width: 85px;
 				font-size: large;
 			}
-			#mytank{
+			
+			#mytank {
 				height: 60px;
 				width: 90px;
 				background-image: url(img7/right.png);
 			}
+			
+			#zidan {
+				height: 20px;
+				width: 20px;
+				border-radius: 10px;
+				background-color: red;
+				position: absolute;
+				z-index: 2;
+				left: 50px;
+				top: 125px;
+			}
 		</style>
 	</head>
+
 	<body>
 		<input id="btn1" type="button" value="btn1" />
 		<input id="btn2" type="button" value="btn2" />
-		<input id="btn3" type="button" value="btn3" /><br />
-		
+		<input id="btn3" type="button" value="btn3" />
+        <span style="color: black; font-size: x-large;background-color:white;font-weight: bold;">tips:单机鼠标发射子弹</span>
+        <br />
 		<br />
 		<hr />
-		<div id="mytank" style="left: 30px;position: absolute;"></div>
+		<div id="mytank" style="left: 30px;position: absolute; z-index: 3;"></div>
+		<div id="zidan"></div>
 		<script type="text/javascript">
-			
 			var btn1 = document.getElementById('btn1');
 			var btn2 = document.getElementById('btn2');
-			var btn3 = document.getElementById('btn3');			
-			btn1.onclick = function clickbtn1(){
-			   alert('btn1')
+			var btn3 = document.getElementById('btn3');
+			btn1.onclick = function clickbtn1() {
+				alert('btn1')
 			}
-			
-			btn2.onclick = function(){
+
+			btn2.onclick = function() {
 				this.value = '按钮二'
 				alert('按钮二')
 			}
-			btn3.addEventListener('click',function(){
+			btn3.addEventListener('click', function() {
 				this.value = '按钮三'
 			})
-			btn3.addEventListener('mouseenter',function(){
+			btn3.addEventListener('mouseenter', function() {
 				this.style.backgroundColor = 'red'
 			})
-			
+
 			var mytank = document.getElementById('mytank');
+			var zidan = document.getElementById('zidan')
+
+			var keycode = 0
 			window.addEventListener(
 				'keydown',
-				function(e){					
-					if(e.keyCode == 68){	
-						mytank.style.width = '90px'
-						mytank.style.height = '60px'
+				function(e) {
+
+					if(e.keyCode == 68) {
+						keycode = e.keyCode
+						mytank.style.width = '85px'
+						mytank.style.height = '58px'
 						mytank.style.backgroundImage = 'url(img7/right.png)'
-						mytank.style.left = (mytank.offsetLeft+10)+'px'; 
-					}	
-					if(e.keyCode == 65){	
-						mytank.style.width = '90px'
-						mytank.style.height = '60px'
+						mytank.style.left = (mytank.offsetLeft + 10) + 'px';
+						zidan.style.left = (zidan.offsetLeft + 10) + 'px';
+
+					}
+					if(e.keyCode == 65) {
+						keycode = e.keyCode
+						mytank.style.width = '85px'
+						mytank.style.height = '58px'
 						mytank.style.backgroundImage = 'url(img7/left.png)'
-						mytank.style.left = (mytank.offsetLeft-10)+'px'; 
-					}		
-					if(e.keyCode == 87){
-						mytank.style.width = '60px'
-						mytank.style.height = '90px'
+						mytank.style.left = (mytank.offsetLeft - 10) + 'px';
+						zidan.style.left = (zidan.offsetLeft - 10) + 'px';
+					}
+					if(e.keyCode == 87) {
+						keycode = e.keyCode
+						mytank.style.width = '58px'
+						mytank.style.height = '85px'
 						mytank.style.backgroundImage = 'url(img7/up.png)'
-						mytank.style.top = (mytank.offsetTop-10)+'px';
+						mytank.style.top = (mytank.offsetTop - 10) + 'px';
+						zidan.style.top = (zidan.offsetTop - 10) + 'px';
 					}
-					if(e.keyCode == 83){
-						mytank.style.width = '60px'
-						mytank.style.height = '90px'
+					if(e.keyCode == 83) {
+						keycode = e.keyCode
+						mytank.style.width = '58px'
+						mytank.style.height = '85px'
 						mytank.style.backgroundImage = 'url(img7/down.png)'
-						mytank.style.top = (mytank.offsetTop+10)+'px';
+						mytank.style.top = (mytank.offsetTop + 10) + 'px';
+						zidan.style.top = (zidan.offsetTop + 10) + 'px';
 					}
-				});				
+
+				});
+			window.addEventListener('click', function() {
+				zidan_remove(keycode)
+			})
+
+			function zidan_remove(keycode) {
+
+				//子弹每次移动的时间
+				itemtime = 30
+				//子弹每次移动的距离
+				var flag = false
+				var itemdistence = 30
+				var totaldistence = 600
+				var currdistence = 0
+
+				var intervalId = setInterval(function() {
+					currdistence = currdistence + itemdistence
+					console.log(currdistence)
+					if(keycode == 68 || keycode == 0) {
+						zidan.style.left = (zidan.offsetLeft + itemdistence) + 'px';
+					}
+					if(keycode == 65) {
+						zidan.style.left = (zidan.offsetLeft - itemdistence) + 'px';
+					}
+					if(keycode == 87) {
+						zidan.style.top = (zidan.offsetTop - itemdistence) + 'px';
+					}
+					if(keycode == 83) {
+						zidan.style.top = (zidan.offsetTop + itemdistence) + 'px';
+					}
+					if(currdistence >= totaldistence) {
+						//回到坦克的位置
+						zidan.style.left = (mytank.offsetLeft + 20) + 'px';
+						zidan.style.top = (mytank.offsetTop + 20) + 'px';
+						clearInterval(intervalId)
+					}
+
+				}, itemtime)
+
+			}
 		</script>
 	</body>
+
 </html>
