@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.work{
+				float: left;
+				height: 800px;
+				width: 500px;
+				border: 1px black solid;
+				margin: 20px;				
+			}
+			ul{
+				padding-left: 5px;
+				margin-left: 10px;
+				margin-top: 3px;
+			}
+		    ul li{
+		    	list-style: none;		    	
+		    }
+		    .two_li{
+		    	padding-left: 3px;
+		    }
+		    #two_ul{
+		    	display: none;
+		    }
+		    .one_ul{
+		    	margin-top: 20px;
+		    }
+		</style>
+		<style>
+			.box{
+				width: 233px;
+				height: 250px;
+				border-radius: 20px;		
+				margin:  0 auto;
+				margin-top: 30px;
+			}
+			.img_style{
+				margin-top: -2px;
+				float: left;
+			}
+			.notebook{
+				height:250px ;
+				width: 223px;
+				text-align: center;
+			}
+			.phone{
+				height:250px ;
+				width: 223px;
+				text-align: center;			
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--//第一个作业-->
+		<div class="work">
+			<ul class="one_ul">
+				<li id="one_li">
+					<img src="img8/fclose.gif"/>文学艺术
+					<ul id="two_ul"  name='two_ul'>
+						<li class="two_li"><img src="img8/doc.gif"/>先锋写作</li>
+						<li class="two_li"><img src="img8/doc.gif"/>小说散文</li>
+						<li class="two_li"><img src="img8/doc.gif"/>诗风词韵</li>
+					</ul>
+				</li>
+				<li id="one_li">
+					<img src="img8/fclose.gif"/>贴图专区
+					<ul id="two_ul"  name='two_ul'>
+						<li class="two_li"><img src="img8/doc.gif"/>先锋写作</li>
+						<li class="two_li"><img src="img8/doc.gif"/>小说散文</li>
+						<li class="two_li"><img src="img8/doc.gif"/>诗风词韵</li>
+					</ul>
+				</li>
+				<li id="one_li">
+					<img src="img8/fclose.gif"/>房产论坛
+					<ul id="two_ul"  name='two_ul'>
+						<li class="two_li"><img src="img8/doc.gif"/>先锋写作</li>
+						<li class="two_li"><img src="img8/doc.gif"/>小说散文</li>
+						<li class="two_li"><img src="img8/doc.gif"/>诗风词韵</li>
+					</ul>
+				</li>
+				<li id="one_li">
+					<img src="img8/fclose.gif"/>娱乐八卦
+					<ul id="two_ul" name='two_ul'>
+						<li class="two_li"><img src="img8/doc.gif"/>先锋写作</li>
+						<li class="two_li"><img src="img8/doc.gif"/>小说散文</li>
+						<li class="two_li"><img src="img8/doc.gif"/>诗风词韵</li>
+					</ul>
+				</li>
+			</ul>
+			
+		</div>
+		<!--//第二个作业-->
+		<div class="work">
+			<div class="box">
+			<img id="notebook" class="img_style" src="img8/left1.jpg"/>
+			<img id="phone" class="img_style" src="img8/right1.jpg"/>
+			<div class="notebook">
+				<img src="img8/end1.jpg"/>
+			</div>
+			<div class="phone">
+				<img src="img8/end2.jpg"/>
+			</div>
+			</div>			
+		</div>
+	</body>
+	<script src="js/jquery-1.11.1.js"></script>
+	<script>
+		var $one_li = $('div>ul>li')
+		var $two_ul = $('div>ul>li>ul')
+		$one_li.click(function(){
+			var index = $(this).index()
+			if($two_ul[index].style.display === 'block'){
+				$two_ul[index].style.display = 'none'
+			}else{
+				$two_ul[index].style.display = 'block'
+			}
+						
+		})
+		
+	</script>
+	<script>
+		var $notebook = $('#notebook')
+		var $phone = $('#phone')
+		var $notebook_content = $('.notebook')
+		var $phone_content = $('.phone')
+		$notebook.mouseenter(
+		function(){
+			$notebook[0].setAttribute('src','img8/left1.jpg')
+			$phone[0].setAttribute('src','img8/right1.jpg')
+			$notebook_content[0].style.display = 'block'
+			$phone_content[0].style.display = 'none'
+		})
+		$phone.mouseenter(
+		function(){
+			$notebook[0].setAttribute('src','img8/left2.jpg')
+			$phone[0].setAttribute('src','img8/right2.jpg')
+			$notebook_content[0].style.display = 'none'
+			$phone_content[0].style.display = 'block'
+		})
+	</script>
+</html>
+
