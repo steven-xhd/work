@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				padding: 0;
+				margin: 0;								
+			    margin: 0 auto;			  
+			}
+			.content{
+				position: absolute;			
+				height: 700px;
+				width: 800px;
+				margin: 0 auto;	
+				left: 300px;			
+				background-color: gray;
+			}
+			.ad1{
+				position: fixed;
+				z-index: 99;
+				left: 150px;
+			}
+			.ad2{
+				position: fixed;
+				z-index: 99;
+				right: 150px;
+			}
+			.ad3{
+				position: fixed;
+				z-index: 99;
+				right: 10px;
+				bottom:-250px ;				
+			}		
+			.ad1 .close{
+				position: absolute;
+				z-index: 99;
+				bottom: 10px;
+				left:50px;			
+			}
+			.ad2 .close{
+				position: absolute;
+				z-index: 99;
+				bottom: 10px;
+				left:50px;			
+			}
+			.ad3 .close{
+				position: absolute;
+				z-index: 99;
+				top: 10px;
+				right:10px;			
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			
+		</div>
+		<div class="ad1">
+			<img class="img1" src="img9/ad1.jpg" />
+			<img class="close" src="img9/close.png" width="50" height="15"/>
+		</div>
+		<div class="ad2">
+			<img class="img1" src="img9/ad1.jpg" />
+			<img class="close" src="img9/close.png" width="50" height="15"/>
+		</div>
+		<div class="ad3">
+			<img id="img1" class="img1" src="img9/ad2.jpg" />
+			<img id="close" class="close" src="img9/close.png" width="50" height="15"/>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.1.js"></script>
+	<script>
+		var $close = $('.close')
+		//关闭全部广告
+		var $img = $('.img1')
+		$close.click(function(){
+			$img.hide()
+		})
+		var movedistance = 250
+		var itemtime = 20
+		var totaltime = 500
+		var bottom_distance = -250
+		var itemdistance = movedistance/(totaltime/itemtime)
+		//广告缓慢弹出(两秒后弹出广告)
+		setTimeout(function(){
+			var intervalId = setInterval(function(){
+				console.log(1) 
+				bottom_distance = bottom_distance + itemdistance
+				if(bottom_distance >= 0){ 
+					clearInterval(intervalId)
+				} 
+				console.log()
+				$('.ad3').css('bottom',bottom_distance)
+			},itemtime)
+		},2000)
+	</script>
+</html>
