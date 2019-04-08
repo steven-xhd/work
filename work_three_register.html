@@ -8,25 +8,26 @@
 		<link rel="stylesheet" type="text/css" href="css/register.css"/>
 	</head>
 	<body>
-		<form method="" action="">
+		<form id="myform" method="post" action="https://www.jd.com">
 <div class="register">
-	<div class="register_input">
+	<div id="erro_tips" class="register_input" style="border: 0; text-align: center;"></div>
+	<div name="input" class="register_input">
 		用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名&nbsp;
-		<input type="text" class="input_text" name="" value="" placeholder="您的用户名和登录名"/>
+		<input id="username" type="text" class="input_text" name="" value="" placeholder="您的用户名和登录名"/>
 	</div>
-	<div class="register_input">
+	<div name="input" class="register_input">
 		设&nbsp;置&nbsp;密&nbsp;码
-		<input type="password" class="input_text password_pic" name="" value="" placeholder="建议至少使用两种字符组合"/>
+		<input id="pwd1" type="password" class="input_text password_pic" name="" value="" placeholder="建议至少使用两种字符组合"/>
 	</div>
-	<div class="register_input">
+	<div name="input" class="register_input">
 		确&nbsp;认&nbsp;密&nbsp;码
-		<input type="password" class="input_text password_pic" name="" value="" placeholder="请再次输入密码"/>
+		<input id="pwd2" type="password" class="input_text password_pic" name="" value="" placeholder="请再次输入密码"/>
 	</div>
-	<div class="register_input"> 
+	<div name="input" class="register_input"> 
 		中国&nbsp;0086&nbsp;
-		<input type="text" class="input_text" name="" value="" placeholder="建议使用常用手机"/>
+		<input id="tel" type="text" class="input_text" name="" value="" placeholder="建议使用常用手机"/>
 	</div>
-	<div class="register_input">
+	<div name="input" class="register_input">
 		验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码&nbsp;
 		<input type="text" class="input_text" name="" value="" placeholder="请输入验证码"/>
 	</div>
@@ -35,8 +36,111 @@
 		<span class="font_color">《京东用户注册协议》</span>&nbsp;&nbsp;&nbsp;&nbsp;
 		<span class="font_color">《隐私政策》</span>
 	</p>
-	<input type="submit" class="register_button" name="" id="" value="立&nbsp;&nbsp;即&nbsp;&nbsp;注&nbsp;&nbsp;册" />
+	<input id="register" type="button" class="register_button" name=""  value="立&nbsp;&nbsp;即&nbsp;&nbsp;注&nbsp;&nbsp;册" />
 </div>
 </form>
 	</body>
+	<script>
+		var flag = true
+		var register = document.getElementById('register')
+		var username = document.getElementById('username')
+		var pwd1 = document.getElementById('pwd1')
+		var pwd2 = document.getElementById('pwd2')
+		var tel = document.getElementById('tel')
+		var tip = document.getElementById('erro_tips')
+		var myform = document.getElementById('myform')
+		var r = new RegExp(/^\S{2,6}$/)//验证用户名
+		var r1 = new RegExp(/^\w{6,10}$/)//验证密码
+		var r2 = new RegExp(/^\d{11}$/)//验证手机号
+		/*username_validate_begin*/
+		username.addEventListener('blur',function(){
+		if(username.value==null||username.value==""||r.test(username.value)==false){
+			username.style.border = '1px red solid'
+			username.style.color = 'red'
+			username.select()
+		    tip.innerText = '用户名不能为空,长度为2到6位'
+		    tip.style.color = 'red'
+			flag = false
+		}
+		else{			
+			flag = true
+		}
+		})	
+		username.addEventListener('focus',function(){
+			username.style.border = 0+'px'
+			username.style.color = 'black'
+		    tip.innerText = ''		  						
+		})
+		/*username_validate_end*/
+		/*password_begin*/
+		pwd1.addEventListener('blur',function(){
+		if(pwd1.value==null||pwd1.value==""||r1.test(pwd1.value)==false){
+			pwd1.style.border = '1px red solid'
+			pwd1.style.color = 'red'
+			pwd1.select()
+		    tip.innerText = '密码不能为空,长度为6到10位'
+		    tip.style.color = 'red'
+			flag = false
+		}
+		else{			
+			flag = true
+		}
+		})	
+		pwd1.addEventListener('focus',function(){
+			pwd1.style.border = 0+'px'
+			pwd1.style.color = 'black'
+		    tip.innerText = ''		  						
+		})
+		/*password_end*/
+		/*password_assure_begin*/
+		pwd2.addEventListener('blur',function(){
+		if(pwd2.value!=pwd1.value){
+			pwd2.style.border = '1px red solid'
+			pwd2.style.color = 'red'
+			pwd2.select()
+		    tip.innerText = '密码不一致'
+		    tip.style.color = 'red'
+			flag = false
+		}
+		else{			
+			flag = true
+		}
+		})	
+		pwd2.addEventListener('focus',function(){
+			pwd2.style.border = 0+'px'
+			pwd2.style.color = 'black'
+		    tip.innerText = ''		  						
+		})
+		/*password_assure_end*/
+		/*tel_begin*/
+		tel.addEventListener('blur',function(){
+		if(tel.value==null||tel.value==""||r2.test(tel.value)==false){
+			tel.style.border = '1px red solid'
+			tel.style.color = 'red'
+			tel.select()
+		    tip.innerText = '手机号不能为空,长度为11位'
+		    tip.style.color = 'red'
+			flag = false
+		}
+		else{			
+			flag = true
+		}
+		})	
+		tel.addEventListener('focus',function(){
+			tel.style.border = 0+'px'
+			tel.style.color = 'black'
+		    tip.innerText = ''		  						
+		})
+		/*tel_end*/
+		register.addEventListener('click',function(){
+		if(flag == true){
+			myform.submit()
+		}	
+		else{
+			tip.innerText = '请完善信息'
+		}
+		})
+		
+		
+	</script>
 </html>
