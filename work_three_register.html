@@ -7,40 +7,109 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/register.css"/>
 	</head>
+    <style>
+    	label{
+    		color: black;
+    		background: red;
+    		font-size: large;
+    	}
+    	#erro_tips{
+    		height: 100px;
+    		width: 300px;
+    		border: 2px red solid;
+    	}
+    </style>
 	<body>
-		<form id="myform" method="post" action="https://www.jd.com">
-<div class="register">
-	<div id="erro_tips" class="register_input" style="border: 0; text-align: center;"></div>
+		<form id="myform" method="post" action="https://www.jd.com">  
+<div class="register">	
+	 <div id="erro_tips" class="register_input" style="border: 0; text-align: center;"></div>
 	<div name="input" class="register_input">
 		用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名&nbsp;
-		<input id="username" type="text" class="input_text" name="" value="" placeholder="您的用户名和登录名"/>
+		<input id="username" type="text" class="input_text" name="username" value="" placeholder="您的用户名和登录名"/>
 	</div>
 	<div name="input" class="register_input">
 		设&nbsp;置&nbsp;密&nbsp;码
-		<input id="pwd1" type="password" class="input_text password_pic" name="" value="" placeholder="建议至少使用两种字符组合"/>
+		<input id="pwd1" type="password" class="input_text password_pic" name="pwd1" value="" placeholder="建议至少使用两种字符组合"/>
 	</div>
 	<div name="input" class="register_input">
 		确&nbsp;认&nbsp;密&nbsp;码
-		<input id="pwd2" type="password" class="input_text password_pic" name="" value="" placeholder="请再次输入密码"/>
+		<input id="pwd2" type="password" class="input_text password_pic" name="pwd2" value="" placeholder="请再次输入密码"/>
 	</div>
 	<div name="input" class="register_input"> 
 		中国&nbsp;0086&nbsp;
-		<input id="tel" type="text" class="input_text" name="" value="" placeholder="建议使用常用手机"/>
+		<input id="tel" type="text" class="input_text" name="tel" value="" placeholder="建议使用常用手机"/>
 	</div>
 	<div name="input" class="register_input">
 		验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码&nbsp;
-		<input type="text" class="input_text" name="" value="" placeholder="请输入验证码"/>
+		<input type="text" class="input_text" name="validateNumber" value="" placeholder="请输入验证码"/>
 	</div>
 	<p class="agree">
-		<input type="checkbox" name="" id="" value="" />阅读并同意
+		<input type="checkbox" name="AgreeProtocol" id="" value="" />阅读并同意
 		<span class="font_color">《京东用户注册协议》</span>&nbsp;&nbsp;&nbsp;&nbsp;
 		<span class="font_color">《隐私政策》</span>
 	</p>
-	<input id="register" type="button" class="register_button" name=""  value="立&nbsp;&nbsp;即&nbsp;&nbsp;注&nbsp;&nbsp;册" />
+	<input id="register" type="submit" class="register_button" name=""  value="立&nbsp;&nbsp;即&nbsp;&nbsp;注&nbsp;&nbsp;册" />
 </div>
 </form>
 	</body>
-	<script>
+	<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/addtional-addmethod.js"></script>
+	<script type="text/javascript">
+		$('#myform').validate({
+			rules: {
+				username:{
+					required:true,
+					rangelength:[3,6]
+				},
+				pwd1:{
+					required:true,
+					rangelength:[6,10]
+				},
+				pwd2:{				
+					equalTo:"#pwd1"
+				},
+				validateNumber: {
+				    required:true,
+				    maxlength:6,
+				    minlength:6
+			   },
+			   AgreeProtocol: {
+			   	   required:true 
+			   },
+			   tel: {
+			   	   istelnumber:["0","9"]
+			   }
+			},
+			messages: {
+				username:{
+					required: "用户名不能为空!",
+					rangelength: "用户名长度必须为3-6位!"
+				},
+				pwd1:{
+					required: "密码不能为空!",
+					rangelength: "密码长度必须为6-10位！"
+				},
+				pwd2:{					
+					equalTo: "密码必须保持一致！"
+				}, 
+				validateNumber: {
+					required:"验证码必须输入！",			
+				    maxlength:"必须输入六位整数",
+				    minlength:"必须输入六位整数"
+			   },
+			   AgreeProtocol: {
+			   	   required:"必须同意协议相关内容"
+			   }
+			},
+			
+			errorPlacement: function(error, element) {  
+            error.appendTo("#erro_tips");  
+            }
+			 
+		})
+	</script>
+	<!--<script>
 		var flag = true
 		var register = document.getElementById('register')
 		var username = document.getElementById('username')
@@ -142,5 +211,5 @@
 		})
 		
 		
-	</script>
+	</script>-->
 </html>
