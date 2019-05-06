@@ -98,5 +98,10 @@ body{margin:0}
 	$checkAll.click(function(){
 		$product.prop('checked',this.checked)		
 	})
+	$product.click(function(){
+		if($('input:checked').length == $product.length){
+			$checkAll.prop('checked',true)
+		}
+	})
 </script>
 </html>
