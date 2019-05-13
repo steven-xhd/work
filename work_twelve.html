@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	     <style type="text/css">
+	     	body{
+	     		padding: 0;
+	     		margin: 0;
+	     		background-color: black;
+	     	}
+	     </style>
+	     <script src="js/jquery-1.11.1.js"></script>
+	</head>	 
+	
+	<body>
+		 <div style="color: red;">鼠标右击移动，Q、W释放技能</div>
+		 <img id="charactor" src="img12/player_right.gif"/>
+	</body>
+	<script>
+		 var $charactor = $('#charactor')
+		 var mousetop = 0
+		 var mouseleft = 0		
+		 $charactor.css({
+		 	left:'200px',
+		 	top:'200px'
+		 })
+		 $('body').css('position','relative')
+		 $charactor.css('position','absolute')		 
+		
+		var eventofffsetX = $charactor.offset().left
+	 
+		 $('body,html').on('contextmenu',function(event){
+		 	eventofffsetX = event.offsetX
+			mousetop = event.offsetY-($charactor.height()/2)
+		    mouseleft = event.offsetX-($charactor.width()/2)
+		 	//console.log(mouseleft,lastmouseleft)
+		 	if(eventofffsetX <= $charactor.offset().left){		 
+		 		
+		 		$charactor.attr({
+		 			"src":"img12/player_left.gif"
+		 		})
+		 	}else{		 		
+		 		$charactor.attr({
+		 			"src":"img12/player_right.gif"
+		 		})
+		 	}
+		 	
+		 	
+		 	$charactor.stop()		 
+		 	$charactor.animate({
+		 	left:mouseleft+'px',
+		 	top:mousetop+'px'
+		 },3000)
+		 	return false
+		 })
+		 $('body').on('keydown',function(event){
+		 	if(event.keyCode==81){		 		
+		 		$charactor.after("<img id='pet' src='img12/pet.gif'/>")
+		 		$('#pet').css({
+		 			'position':'absolute',
+		 			'left':$charactor.offset().left+200,
+		 			'top':$charactor.offset().top-100		 			
+		 			})
+		 		setTimeout(function(){
+		 			$('#pet').remove()
+		 		},5000)
+		 		
+		 	}
+		 	
+		 	if(event.keyCode==87){	 		
+		 		if(eventofffsetX < $charactor.offset().left){
+		 			$charactor.attr("src","img12/playerbig_left.gif")
+		 			setTimeout(function(){
+		 				$charactor.attr("src","img12/player_left.gif")
+		 			},3000)
+		 		}
+		 		else{
+		 			$charactor.attr("src","img12/playerbig_right.gif")
+		 			setTimeout(function(){
+		 				$charactor.attr("src","img12/player_right.gif")
+		 			},3000)
+		 		}
+		 		
+		 	}
+		 })
+		 
+	</script>
+</html>
