@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+		<script src="js/jquery-1.11.1.js"></script>
+		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+	</head>
+
+	<body>
+		<div class="container">
+		<h2><div id="title" class="alert alert-success  text-center "></div></h1>
+		<div style="position: relative; height: 50px;">
+			<button id="last" type="button" style=" position:absolute;left: 0px;" class="btn btn-primary btn-lg ">上一页</button>
+		    <div style="position: absolute; left: 45%; top: 30%;"><span>第</span>&nbsp;&nbsp;<span id="pageindex"></span>&nbsp;&nbsp;<span>页</span></div>
+		    <button id="next" type="button" style=" position:absolute;right: 0px;" class="btn btn-primary btn-lg ">下一页</button>
+		</div>
+		<h4><div id="content" class="alert alert-warning"></div></h4>				
+	</body>
+	<script>
+		var index = 1
+		var $pageindex = $('#pageindex')
+		$pageindex.text(index)
+		var urls = "http://hoa.hcoder.net/index.php?user=hcoder&pwd=hcoder&m=info&id="+index;
+	     $.ajax({
+	    	url:urls,
+	    	dataType:"json",
+	    	success:function(data){
+	    		$('#title').html(data.title)
+	    		$('#content').html(data.content)
+	    	}
+	    })
+	    
+	   
+	    $('#last').click(function(){
+	    	index = index - 1
+	    	if(index <= 1){
+	    		index = 1
+	    	}	    	
+	    	urls = "http://hoa.hcoder.net/index.php?user=hcoder&pwd=hcoder&m=info&id="+index;
+	        $.ajax({
+	    	url:urls,
+	    	dataType:"json",
+	    	success:function(data){
+	    		$('#title').html(data.title)
+	    		$('#content').html(data.content)
+	    		$pageindex.text(index)
+	    	}
+	    })	    	    
+	    })
+	    
+	    $('#next').click(function(){
+	    	index = index + 1  	    	
+	    	urls = "http://hoa.hcoder.net/index.php?user=hcoder&pwd=hcoder&m=info&id="+index;
+	        $.ajax({
+	    	url:urls,
+	    	dataType:"json",
+	    	success:function(data){
+	    		if(data.id == 0){
+	    			index = index - 1
+	    			alert("已经没有新闻了")
+	    		}else{
+	    		$('#title').html(data.title)
+	    		$('#content').html(data.content)
+	    		$pageindex.text(index)
+	    		}
+	    		
+	    	}
+	    })	    	    
+	    })
+	  
+	</script>
+</html>
